@@ -1,0 +1,19 @@
+{
+  "name": "chatgpt-slack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/bolt": "^3.12.2",
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.20",
+    "openai": "^3.1.0"
+  }
+}
