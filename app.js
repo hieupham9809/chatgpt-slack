@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const { App } = require("@slack/bolt");
 require("dotenv").config();
-var generate = require("./api/generate").generate;
+var generateResponseFrom = require("./api/generate").generateResponseFrom;
 
 const app = new App({
 	token: process.env.SLACK_BOT_TOKEN,
@@ -26,11 +26,7 @@ app.message(async ({ message, say }) => {
  console.log(`received message: ${text} from ${user}`);
  
     try {
-      const response = await generate({ user: user, question: text });
-
-      if (response.status !== 200) {
-        throw new Error(`Request failed with status ${response.status}, error: ${response.message}`);
-      }
+      let response = await generateResponseFrom(user, text);
 
       say(response.result);
       console.log(response.result);
@@ -48,4 +44,3 @@ app.message(async ({ message, say }) => {
 	await app.start(process.env.PORT || port);
 	console.log(`Slack Bolt app is running`);
 })();
-
