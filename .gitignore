@@ -1,5 +1,6 @@
 chatgpt_slack.service
-
+api/invalid-keys.txt
+api/keys.txt
 # Logs
 logs
 *.log
