@@ -103,3 +103,12 @@ function generatePrompt(question) {
   A: `;
 }
 
+function generatePromptFrom(messages) {
+  return messages.reduce(
+    (result, currentMessage) => {
+      let sentence = `${currentMessage.isUserMsg ? 'Q' : 'A'}: ${currentMessage.text}`;
+      return result + `\n${sentence}`;
+    }, 
+    'I want you to reply to all my questions in markdown format.'
+  ) + '\nA: ';
+}
